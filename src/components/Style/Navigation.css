@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+    margin: 0 40px 0 40px;
+    background-color: #d0e7f3;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+section{
+    padding: 0 32px;
+}
+
+.logo__title img{
+  width: 16rem;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav{
+    width: 100%;
+    padding-top: 32px;
+}
+
+ul{
+  position: absolute;
+  right: 0;
+  display: flex;
+  padding: 24px;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    font-weight: 600;
+    color: #243e63;
+    text-decoration: none;
+}
+
+.nav__link:hover{
+    border-bottom: 2px solid #6415ff;
+    padding: 0 0 4px;
+}
+
+.acc__first--letter{
+    border: 2px solid #d0e7f3;
+    padding: 0 0 6px;
+}
+
+.acc__first--letter:hover{
+    border-bottom: 2px solid #6415ff;
+    padding: 0 0 6px;
+}
+
+.icon{
+    width: 35px;
+}
+
+.sign__up--link p{
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f7fafc;
+    background-color: #6415ff;
+    border-radius: 50px;
+}
+
+@media (max-width: 520px) {
+  .navbar{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
