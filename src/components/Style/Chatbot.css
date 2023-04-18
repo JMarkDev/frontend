@@ -16,7 +16,6 @@ body {
   }
   
   .chatbot__body {
-    /* height: 100%; */
     position: relative;
     margin: 80px 24px;
     padding-bottom: 20px;
@@ -54,6 +53,13 @@ body {
     margin-right: 100px;
     background: #1f55ed;
     color: #fff;
+  }
+
+  .dark-mode .messages__user{
+    background-color: #282A3A;
+    color: #fff;
+    box-shadow: none;
+    border: 1px solid #B6EADA;
   }
   
   .chatbot__footer {

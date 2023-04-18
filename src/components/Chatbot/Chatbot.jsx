@@ -3,7 +3,7 @@ import '../Style/Chatbot.css';
 import axios from 'axios';
 import Messages from './Messages';
 
-const Chatbot = () => {
+const Chatbot = ({isDarkMode}) => {
   const [message, setMessage] = useState('');
   const [conversations, setConversations] = useState([]);
   const messagesEndRef = useRef(null);
@@ -27,7 +27,7 @@ const Chatbot = () => {
   }, [conversations]);
 
   return (
-    <div className='chatbot'>
+    <div className={`chatbot ${isDarkMode ? "dark-mode" : ""}`}>
       <div className='chatbot__body'>
         {conversations.map((conversation, index) => (
           <Messages

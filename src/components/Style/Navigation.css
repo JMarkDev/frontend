@@ -4,7 +4,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
 }
 
 body{
@@ -22,6 +23,7 @@ section{
 
 .logo__title img{
   width: 16rem;
+  cursor: pointer;
 }
 
 .logo{
@@ -33,6 +35,7 @@ section{
 
 
 .navbar{
+    margin-top: -70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,8 +53,13 @@ ul{
   padding: 24px;
 }
 
+ul li:first-child{
+    margin-right: 20px;
+}
+
 li{
     list-style: none;
+    cursor: pointer;
 }
 
 a{
@@ -60,26 +68,54 @@ a{
     text-decoration: none;
 }
 
+.nav__link {
+    position: relative;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.3s ease;
+  }
+  
+  .nav__link:hover {
+    border-bottom: 3px solid #6415ff;
+  }
+  
+  
+  .nav__link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #6415ff;
+    transition: width 0.3s ease;
+  }
+  
+  
+  .nav__link:hover::before {
+    width: 100%;
+    transition: width 0.3s ease;
+  }
+
 .nav__link:hover{
-    border-bottom: 2px solid #6415ff;
-    padding: 0 0 4px;
+    border-bottom: 3px solid #6415ff;
+    /* padding: 0 0 4px; */
+    transition: 0.3 ease;
 }
 
 .acc__first--letter{
-    border: 2px solid #d0e7f3;
     padding: 0 0 6px;
 }
 
-.acc__first--letter:hover{
+/* .acc__first--letter:hover{
     border-bottom: 2px solid #6415ff;
     padding: 0 0 6px;
-}
+} */
 
 .icon{
     width: 35px;
 }
 
-.sign__up--link p{
+.sign__up--link span{
     width: 35px;
     height: 35px;
     font-size: 16px;
@@ -90,6 +126,57 @@ a{
     color: #f7fafc;
     background-color: #6415ff;
     border-radius: 50px;
+}
+
+
+.dark-mode,
+body.dark-mode,
+.chatbot__footer.dark-mode,
+.dark-mode .chatbot__footer {
+  background-color: #282A3A;
+  transition: 0.3s ease-in-out all;
+}
+
+.dark-mode .nav__link:hover {
+  border-bottom: 3px solid #fff;
+}
+
+.dark-mode .nav__link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.dark-mode .nav__link:hover::before {
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
+.dark-mode .sign__up--link span{
+  width: 35px;
+  height: 35px;
+  font-size: 16px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.dark-mode img{
+  filter: brightness(0) invert(1);
+}
+
+button{
+  background-color: transparent;
+  border: none;
 }
 
 @media (max-width: 520px) {
