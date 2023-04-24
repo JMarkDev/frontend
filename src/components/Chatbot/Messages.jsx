@@ -9,7 +9,7 @@ const Messages = (props) => {
         setMessageLength((prevLength) =>
           prevLength < props.response.data.length ? prevLength + 1 : prevLength
         );
-      }, 50);
+      }, 20);
       return () => clearInterval(messageInterval);
     }
   }, [props.response]);

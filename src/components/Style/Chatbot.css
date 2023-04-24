@@ -45,6 +45,7 @@ body {
   .messages__df{
     color: #333;
     margin-left: 100px;
+    line-height: 1.5;
   }
 
   .messages__user{

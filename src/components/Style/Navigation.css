@@ -133,7 +133,7 @@ a{
 body.dark-mode,
 .chatbot__footer.dark-mode,
 .dark-mode .chatbot__footer {
-  background-color: #282A3A;
+  background-color: #0c1022;
   transition: 0.3s ease-in-out all;
 }
 

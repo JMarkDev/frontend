@@ -13,7 +13,7 @@ const Chatbot = ({isDarkMode}) => {
   };
 
   const textQuery = async () => {
-    if (!message.trim()) return; // don't send empty message
+    if (!message) return; // don't send empty message
     const response = await axios.post('http://localhost:3000/chatbot/query', {
       user_query: message,
     });
