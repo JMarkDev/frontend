@@ -16,7 +16,7 @@ function App() {
       {validPaths.includes(location.pathname) && <Chatbot />}
       
       <Routes>
-        <Route path="/" element={<Navigate to="/chatbot" />} />
+        <Route path="/" element={<Navigate to="/signup" />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

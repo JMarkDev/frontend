@@ -14,7 +14,7 @@ const Chatbot = ({isDarkMode}) => {
 
   const textQuery = async () => {
     if (!message) return; // don't send empty message
-    const response = await axios.post('http://localhost:3000/chatbot/query', {
+    const response = await axios.post('http://localhost:3001/chatbot/query', {
       user_query: message,
     });
     console.log('response from dialogflow', response.data);
