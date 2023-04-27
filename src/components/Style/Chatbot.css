@@ -1,6 +1,18 @@
 body {
     margin: 0;
     padding: 0;
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 20px;
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5rem;
+    background: #333;
   }
 
   /* html, body {

@@ -27,6 +27,7 @@ const Chatbot = ({isDarkMode}) => {
   }, [conversations]);
 
   return (
+    <div className="messages-container">
     <div className={`chatbot ${isDarkMode ? "dark-mode" : ""}`}>
       <div className='chatbot__body'>
         {conversations.map((conversation, index) => (
@@ -49,6 +50,7 @@ const Chatbot = ({isDarkMode}) => {
         />
         <i className='fa-sharp fa-solid fa-location-arrow' onClick={textQuery} />
       </div>
+    </div>
     </div>
   );
 };

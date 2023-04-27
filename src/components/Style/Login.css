@@ -3,6 +3,18 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  .fa-sharp{
+    height: 100vh;
+    width: 100vw;
+    color: red;
+  }
+
+  .eye{
+    position: absolute;
+    right: 0;
+  }
+
   .login, .signup{
       width: 100vw;
       height: 100vh;

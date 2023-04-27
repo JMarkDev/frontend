@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Style/Login.css";
-import { AiOutlineUser } from "react-icons/ai";
-import { FiUnlock } from "react-icons/fi";
+import { AiOutlineUser, AiOutlineEyeInvisible } from "react-icons/ai";
+import { FiUnlock, FiEye } from "react-icons/fi";
 import axios from "axios";
 
 
@@ -12,8 +12,13 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  
   const handleSubmit = async (event) => {
   event.preventDefault();
   try {
@@ -68,14 +73,23 @@ const Signup = () => {
               />
             </div>
             <div className="input_group">
-              <FiUnlock className="fa" />
+            <FiUnlock className="fa" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 className="input_text"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {showPassword ? (
+                <FiEye className="fa eye" 
+                onClick={togglePasswordVisibility} />
+              ) : (
+                <AiOutlineEyeInvisible
+                  className="fa eye"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
             </div>
             <div className="button_group" id="login_button">
               <button type="submit">Sign Up</button>
