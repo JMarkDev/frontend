@@ -74,6 +74,31 @@ body {
     box-shadow: none;
     border: 1px solid #B6EADA;
   }
+
+  .pc__issues{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* margin-top: 240px;
+    margin-left: 50px;
+    margin-right: 50px; */
+    bottom: 12%;
+  }
+
+  .pc__issues p{
+    color: #1f55ed;
+    background-color: #fff;
+    width: fit-content;
+    padding: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    border: 1px solid #1f55ed;
+    border-radius: 50px;
+    cursor: pointer;
+  }
   
   .chatbot__footer {
     background-color: #d0e7f3;

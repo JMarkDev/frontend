@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../Style/Chatbot.css';
 import axios from 'axios';
 import Messages from './Messages';
+// import pcIssues from './PC_Issues';
 
 const Chatbot = ({isDarkMode}) => {
   const [message, setMessage] = useState('');
@@ -39,6 +40,11 @@ const Chatbot = ({isDarkMode}) => {
         ))}
         <div ref={messagesEndRef} />
       </div>
+      {/* <div className='pc__issues'>
+        {pcIssues.map((issue, index) => (
+          <p key={index}>{issue.issue}</p>
+        ))}
+    </div> */}
       <div className='chatbot__footer'>
         <input
           className='chatbot__footer--input'
