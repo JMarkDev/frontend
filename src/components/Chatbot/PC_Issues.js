@@ -12,7 +12,7 @@ const pcIssues = [
         issue :	"CD/DVD drive not working",
     },
     {
-        issue :	"Keyboard or mouse not respondiissue",
+        issue :	"Keyboard or mouse not responding issue",
     },
     {
         issue :	"No internet connectivity",

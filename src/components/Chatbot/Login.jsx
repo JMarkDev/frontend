@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { useEffect } from "react";
 import { Link , useNavigate} from "react-router-dom";
 import axios from "axios";
 import "../Style/Login.css";
@@ -9,11 +10,13 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  // const [firstLetter, setFirstLetter] = useState("")
   const navigate = useNavigate()
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
 
   const onHandleLogin = async (event) => {
     event.preventDefault();
@@ -30,13 +33,26 @@ const Login = () => {
       alert(response.data.message);
       console.log(response.data.success);
       if (response.data.success) {
-        navigate("/chatbot");
-      }
+        const firstLetter = response.data.data.firstLetter;
+        navigate("/chatbot", { state: { firstLetter } });
+        console.log(firstLetter)
+      }      
+      
     } catch (err) {
       console.log(err);
       alert("Login failed. Please try again.");
     }
   };
+
+  // useEffect(() => {
+  //   console.log(firstLetter);
+  // }, [firstLetter]);
+  
+
+  // const getFirstLetter = (response) => {
+  //   setFirstLetter(response.data.data.firstLetter);
+  //   console.log(firstLetter)
+  // }
 
   return (
     <div className="login">

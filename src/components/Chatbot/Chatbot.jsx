@@ -3,6 +3,7 @@ import '../Style/Chatbot.css';
 import axios from 'axios';
 import Messages from './Messages';
 // import pcIssues from './PC_Issues';
+// import {RiQuestionnaireLine} from "react-icons/ri";
 
 const Chatbot = ({isDarkMode}) => {
   const [message, setMessage] = useState('');
@@ -54,6 +55,7 @@ const Chatbot = ({isDarkMode}) => {
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && textQuery()}
         />
+        {/* <RiQuestionnaireLine className='question_icon'/> */}
         <i className='fa-sharp fa-solid fa-location-arrow' onClick={textQuery} />
       </div>
     </div>

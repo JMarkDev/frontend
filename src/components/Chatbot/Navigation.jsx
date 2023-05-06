@@ -1,11 +1,14 @@
 import "../Style/Navigation.css";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Logo from "../image/pc-wizard-low-resolution-logo-color-on-transparent-background (1).png"
 import Icon from "../image/brightness-and-contrast.png"
 
 
 function Navigation() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const location = useLocation();
+  const firstLetter = location.state ? location.state.firstLetter : "";
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -24,7 +27,7 @@ function Navigation() {
                     <img src={Icon} alt="mode__icon" className="icon" />
               </button>
           </li>
-            <li className="nav__link"><a href="/" className="sign__up--link"><span className="first__name">J</span></a></li>
+            <li className="nav__link"><a href="/" className="sign__up--link"><span className="first__name">{firstLetter}</span></a></li>
           </ul>
         </div>
       </nav>
