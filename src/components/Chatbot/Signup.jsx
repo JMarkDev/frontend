@@ -35,9 +35,8 @@ const Signup = () => {
     alert(response.data.message);
     console.log(response.data.success);
     if (response.data.success) {
-      const firstLetter = response.data;
-      console.log(firstLetter)
-      navigate("/chatbot");
+      const firstLetter = response.data.firstLetter;
+      navigate("/chatbot", { state: { firstLetter } });
     }
   } catch (err) {
     console.log(err);
