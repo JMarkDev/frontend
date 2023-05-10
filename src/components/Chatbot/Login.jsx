@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-// import { useEffect } from "react";
-import { Link , useNavigate} from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import { useAuth } from "../Contexts/AuthContext";
 import "../Style/Login.css";
 import { AiOutlineUser, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FiUnlock, FiEye } from "react-icons/fi";
@@ -10,49 +9,21 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  // const [firstLetter, setFirstLetter] = useState("")
-  const navigate = useNavigate()
+  const auth = useAuth();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-
   const onHandleLogin = async (event) => {
     event.preventDefault();
     try {
-      const userCredentials = {
-        email: email,
-        password: password,
-      };
-      const response = await axios.post(
-        "http://localhost:3001/api/user/login",
-        userCredentials,
-        { responseType: "json" }
-      );
-      alert(response.data.message);
-      console.log(response.data.success);
-      if (response.data.success) {
-        const firstLetter = response.data.data.firstLetter;
-        navigate("/chatbot", { state: { firstLetter } });
-        console.log(firstLetter)
-      }      
-      
+      await auth.login({ email, password });
     } catch (err) {
       console.log(err);
       alert("Login failed. Please try again.");
     }
   };
-
-  // useEffect(() => {
-  //   console.log(firstLetter);
-  // }, [firstLetter]);
-  
-
-  // const getFirstLetter = (response) => {
-  //   setFirstLetter(response.data.data.firstLetter);
-  //   console.log(firstLetter)
-  // }
 
   return (
     <div className="login">
@@ -71,7 +42,7 @@ const Login = () => {
               />
             </div>
             <div className="input_group">
-            <FiUnlock className="fa" />
+              <FiUnlock className="fa" />
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
@@ -80,8 +51,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {showPassword ? (
-                <FiEye className="fa eye" 
-                onClick={togglePasswordVisibility} />
+                <FiEye className="fa eye" onClick={togglePasswordVisibility} />
               ) : (
                 <AiOutlineEyeInvisible
                   className="fa eye"

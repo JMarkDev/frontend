@@ -1,56 +1,40 @@
-// import { useAuth } from "../Contexts/AuthContext";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../Contexts/AuthContext"; 
 import "../Style/Login.css";
 import { AiOutlineUser, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FiUnlock, FiEye } from "react-icons/fi";
-import axios from "axios";
-
 
 const Signup = () => {
-  // const { register } = useAuth();
+  const auth = useAuth(); 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  
-  const handleSubmit = async (event) => {
-  event.preventDefault();
-  try {
-    const userData = {
-      username,
-      email,
-      password,
-    };
-    const response = await axios.post(
-      "http://localhost:3001/api/user/register",
-      userData,
-      { responseType: "json" }
-    );
-    alert(response.data.message);
-    console.log(response.data.success);
-    if (response.data.success) {
-      const firstLetter = response.data.firstLetter;
-      navigate("/chatbot", { state: { firstLetter } });
-    }
-  } catch (err) {
-    console.log(err);
-    alert("Sign up failed. Please try again.");
-  }
-};
 
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    try {
+      await auth.register({username, email, password})
+    }
+     catch (err) {
+      console.log(err);
+      alert("Sign up failed. Please try again.");
+    }
+  };
+  
 
   return (
     <div className="signup">
       <div className="login_form_container signup_form_container">
         <div className="login_form">
           <h2>Sign Up</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSignup}>
             <div className="input_group">
               <AiOutlineUser className="fa" />
               <input
@@ -74,7 +58,7 @@ const Signup = () => {
               />
             </div>
             <div className="input_group">
-            <FiUnlock className="fa" />
+              <FiUnlock className="fa" />
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
@@ -83,8 +67,7 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {showPassword ? (
-                <FiEye className="fa eye" 
-                onClick={togglePasswordVisibility} />
+                <FiEye className="fa eye" onClick={togglePasswordVisibility} />
               ) : (
                 <AiOutlineEyeInvisible
                   className="fa eye"

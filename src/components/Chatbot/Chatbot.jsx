@@ -19,7 +19,6 @@ const Chatbot = ({isDarkMode}) => {
     const response = await axios.post('http://localhost:3001/chatbot/query', {
       user_query: message,
     });
-    console.log('response from dialogflow', response.data);
     setConversations([...conversations, { userMessage: message, response: response.data }]);
     setMessage('');
   };
