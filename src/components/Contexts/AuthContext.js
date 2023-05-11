@@ -12,7 +12,6 @@ function useAuth() {
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState();
-
   const navigate = useNavigate();
 
   const logout = () => {
@@ -25,11 +24,13 @@ function AuthProvider({ children }) {
         email: email,
         password: password,
       };
+
       const response = await axios.post(
         `${BACKEND_API}/user/login`,
         userCredentials,
         { responseType: "json" }
       );
+
       if (response.data.success) {
         const firstLetter = response.data.data.firstLetter;
         setUser({
@@ -49,6 +50,7 @@ function AuthProvider({ children }) {
 
   function register(userData) {
     const { username, email, password } = userData;
+
     fetch(`${BACKEND_API}/user/register`, {
       method: "POST",
       body: JSON.stringify({ username, email, password }),
@@ -57,6 +59,9 @@ function AuthProvider({ children }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          setUser({
+            user: data.user,
+          });
           const firstLetter = userData.username.charAt(0).toUpperCase();
           navigate("/chatbot", { state: { firstLetter, userData } });
           alert("Register Successfully");
@@ -76,7 +81,9 @@ function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 
